@@ -1,0 +1,6 @@
+x = []
+y = []
+for j in lines:
+	k = j.split()
+	x.append(int(k[0]))
+	y.append(int(k[1]))

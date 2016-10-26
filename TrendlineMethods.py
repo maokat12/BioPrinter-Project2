@@ -44,3 +44,5 @@ def Power(data_x, data_y):
   n = len(data_x)
   a0 = math.exp((lny_sum * lnx2_sum - lnx_sum * lnxlny_sum)/(n * lnx2_sum - lnx_sum * lnx_sum))
   a1 = (n * lnxlny_sum - lny_sum * lnx_sum)/(n * lnx2_sum - lnx_sum * lnx_sum)
+  
+  return a0, a1

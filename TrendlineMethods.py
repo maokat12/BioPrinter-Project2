@@ -32,7 +32,7 @@ def Exponential(data_x, data_y):
   return a0, a1
   
 def Power(data_x, data_y):
-  #y = a0*x^a1
+  #y = e^a0*x^a1
   
   lnx_sum, lny_sum, lnxlny_sum, lnx2_sum = 0, 0, 0, 0
   for i, j in data_x, data_y:

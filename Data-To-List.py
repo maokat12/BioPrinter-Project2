@@ -1,5 +1,7 @@
 #method converts list of lines(x,y data) to a list consisting of two lists(x, y)
 def dataList(lines):
+  x = []
+  y = []
   for j in lines:
 	  k = j.split()
 	  x.append(int(k[0]))

@@ -10,15 +10,15 @@ def dataList(lines):
   return datalist, x, y
 
 #read data from text files and convert them to a list of lines
-a = open(input("Print Speed data file: "), 'r')
-speedLines = a.readlines()
-b = open(input("Print Aperature data file: "), 'r')
-aperatureLines = b.readlines()
-c = open(input("Culture Temperature data file: "), 'r')
-tempLines = c.readlines()
-a.close()
-b.close()
-c.close()
+speedData = open(input("Print Speed data file: "), 'r')
+speedLines = speedData.readlines()
+aperatureData = open(input("Print Aperature data file: "), 'r')
+aperatureLines = aperatureData.readlines()
+tempData = open(input("Culture Temperature data file: "), 'r')
+tempLines = tempData.readlines()
+speedData.close()
+aperatureData.close()
+tempData.close()
 
 #declares lists for speed, aperature, and temperature data
 speed, speed_x, speed_y = dataList(speedLines)

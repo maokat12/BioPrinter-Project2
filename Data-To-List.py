@@ -1,9 +1,10 @@
 #method converts list of lines(x,y data) to a list consisting of two lists(x, y)
 def dataList(lines):
+  x, y = [], []
   for j in lines:
 	  k = j.split()
-	  x.append(int(k[0]))
-	  y.append(int(k[1]))
+	  x.append(float(k[0]))
+	  y.append(float(k[1]))
   datalist = [x, y]
   return datalist, x, y
 

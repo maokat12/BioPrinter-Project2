@@ -44,3 +44,12 @@ def Power(data_x, data_y):
   n = len(data_x)
   a0 = math.exp((lny_sum * lnx2_sum - lnx_sum * lnxlny_sum)/(n * lnx2_sum - lnx_sum * lnx_sum))
   a1 = (n * lnxlny_sum - lny_sum * lnx_sum)/(n * lnx2_sum - lnx_sum * lnx_sum)
+  
+#method converts list of lines(x,y data) to a list consisting of two lists(x, y)
+def dataList(lines):
+  for j in lines:
+	  k = j.split()
+	  x.append(int(k[0]))
+	  y.append(int(k[1]))
+  datalist = [x, y]
+  return datalist, x, y

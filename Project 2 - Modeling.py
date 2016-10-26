@@ -37,8 +37,8 @@ temp_a0, temp_a1 = Power(temperature_x, temperature_y)
 
 best_speed, best_aperature, best_temp = 999, 999, 999
 best_time, dimension_error = 999, 0
-for speed in range(0, 3, 0.005):   #should the range numbers be hardcoded in?
-	for aperature in range(0, 2, 0.005):
+for speed in range(0, speed_x[len(speed_x)-1], 0.005):   #should the range numbers be hardcoded in?
+	for aperature in range(0, aperature_x[len(aperature_x)-1], 0.005):
 		for temperature in range(4, 36, .25):  #range numbers can be harded in here	
 			speed_error = speed_a0 + speed_a1*speed
 			aperature_error = math.exp(aperature_a0) * math.exp(aperature_a1*aperature)

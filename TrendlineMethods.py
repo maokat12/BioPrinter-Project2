@@ -11,8 +11,8 @@ def Linear(data_x, data_y):
     xy_sum = xy_sum + i*j
     
   n = len(data_x)
-  a0 = (y_sum * x2_sum - x_sum * xy_sum)/(n * x2_sum - x_sum * x_sum)
-  a1 = (n * xy_sum - y_sum * x_sum)/(n * x2_sum - x_sum * x_sum)
+  a0 = ((y_sum * x2_sum) - (x_sum * xy_sum))/((n * x2_sum) - (x_sum * x_sum))
+  a1 = ((n * xy_sum) - (y_sum * x_sum))/((n * x2_sum) - (x_sum * x_sum))
   return a0, a1
   
 def Exponential(data_x, data_y):
@@ -26,8 +26,8 @@ def Exponential(data_x, data_y):
     xlny_sum = xlny_sum + i*math.log(j)
   
   n = len(data_x)
-  a0 = math.exp((lny_sum * x2_sum - x_sum * xlny_sum)/(n * x2_sum - x_sum * x_sum))
-  a1 = (n * xlny_sum - lny_sum * x_sum)/(n * x2_sum - x_sum * x_sum)
+  a0 = math.exp(((lny_sum * x2_sum) - (x_sum * xlny_sum))/((n * x2_sum) - (x_sum * x_sum)))
+  a1 = ((n * xlny_sum) - (lny_sum * x_sum))/((n * x2_sum) - (x_sum * x_sum))
   
   return a0, a1
   
@@ -42,7 +42,7 @@ def Power(data_x, data_y):
     lnxlny_sum = lnxlny_sum + math.log(i)*math.log(j)
     
   n = len(data_x)
-  a0 = math.exp((lny_sum * lnx2_sum - lnx_sum * lnxlny_sum)/(n * lnx2_sum - lnx_sum * lnx_sum))
-  a1 = (n * lnxlny_sum - lny_sum * lnx_sum)/(n * lnx2_sum - lnx_sum * lnx_sum)
+  a0 = math.exp(((lny_sum * lnx2_sum) - (lnx_sum * lnxlny_sum))/((n * lnx2_sum) - (lnx_sum * lnx_sum)))
+  a1 = ((n * lnxlny_sum) - (lny_sum * lnx_sum))/((n * lnx2_sum) - (lnx_sum * lnx_sum))
   
   return a0, a1

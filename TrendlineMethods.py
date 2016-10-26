@@ -4,7 +4,7 @@ def Linear(data_x, data_y):
   #y = a_0 + a_1*x
   
   x_sum, y_sum, xy_sum, x2_sum = 0, 0, 0, 0
-  for i, j in data_x, data_y:
+  for i, j in zip(data_x, data_y):
     x_sum = x_sum + i
     x2_sum = x2_sum + i**2
     y_sum = y_sum + j
@@ -19,7 +19,7 @@ def Exponential(data_x, data_y):
   #y = a0*e^(a1*x)
   
   x_sum, lny_sum, xlny_sum, x2_sum = 0, 0, 0, 0
-  for i, j in data_x, data_y:
+  for i, j in zip(data_x, data_y):
     x_sum = x_sum + i
     x2_sum = x2_sum + i**2
     lny_sum = lny_sum + math.log(j)
@@ -35,7 +35,7 @@ def Power(data_x, data_y):
   #y = a0*x^a1
   
   lnx_sum, lny_sum, lnxlny_sum, lnx2_sum = 0, 0, 0, 0
-  for i, j in data_x, data_y:
+  for i, j in zip(data_x, data_y):
     lnx_sum = lnx_sum + math.log(i)
     lnx2_sum = lnx2_sum + (math.log(i))**2
     lny_sum = lny_sum + math.log(j)

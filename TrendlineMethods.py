@@ -53,3 +53,44 @@ def dataList(lines):
 	  y.append(int(k[1]))
   datalist = [x, y]
   return datalist, x, y
+  
+def func_type(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
+	#y = a_0 + a_1*x - linear
+	#y = a0*e^(a1*x) - exponential
+	#y = e^a0*x^a1 = power
+	
+	#find SST = SUM((y_i - y_bar)^2)
+	#find average(y_bar)
+	sum_y = 0
+	for y in y_list:
+		sum_y = sum_y + y
+	y_bar = sum_y / len(y_list) #average
+	
+	SST = 0
+	for y in y_list:
+		SST = SST + (y - y_bar)**2
+		
+	#find SSE(linear, exponential, power)
+	#SSE = SUM((y_i - f(x1))^2)
+	SSE_lin = 0
+	SSE_ex = 0
+	SSE_pow = 0
+	for x in x_list:
+		SSE_lin = SSE_lin + (y_list.index(x) - (a0_lin + a1_lin * x))**2
+		SSE_ex = SSE_ex + (y_list.index(x) - (a0_ex * math.exp(a1_ex * x)))**2
+		SSE_pow = SSE_pow + (y_list.index(x) - (math.exp(a0_pow) * x**a1_pow))**2
+		
+	#calculate r2 of different model types
+	r2_lin = 1 - SSE_lin / SST
+	r2_ex = 1 - SSE_ex / SST
+    r2_pow = 1 - SSE_pow / SST
+	
+	#determine which r2 is highest(which model best fits the data given)
+	if r2_lin > r2_ex and r2_lin > r2_pow:
+		function = lambda x: a0_lin + a1_lin*x
+	elif r2_ex > r2_lin and r2_ex > r2_pow:
+		function = lambda x: a0_ex * math.exp(a1_ex * x)
+	else:
+		function = lambda x: math.exp(a0_pow) * x**a1_pow
+		
+	return function

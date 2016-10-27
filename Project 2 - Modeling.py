@@ -6,10 +6,6 @@ volume = float(input("What is the part volume?")) #cm^3
 volume = volume * 1000 #mm^3
 tolerance = float(input("What are the part tolerances?")) #mm
 
-#fixed costs
-volume_cost = 500/1000 #$/mm^3
-time_cost = 18 #$/min part is in machine
-
 #read data from text files and convert them to a list of lines
 speedData = open(input("Print Speed data file: "), 'r')
 aperatureData = open(input("Print Aperature data file: "), 'r')
@@ -81,7 +77,8 @@ for speed in range(0, speed_x[len(speed_x)-1], 0.005):
 				break
 			
 			#calculate print/production time
-			print_time = volume/(speed * aperature) #min
+			#convert speed from sec to min
+			print_time = volume/(speed * 60 * aperature) #min
 			cure_time = 1570/temperature + 20 #min
 			if(print_time < cure_time):
 				production_time = cure_time #min
@@ -89,20 +86,22 @@ for speed in range(0, speed_x[len(speed_x)-1], 0.005):
 				production_time = print_time + 20 #min
 			
 			#reassign "best" combination if new time is fater than old time
-			if(production_time < best_time)
-				best_time = production_time
-				dim_error = dimension_error
-				best_speed = speed
-				best_aperature = aperature
-				best_temp = temp
+			if(production_time < best_time):
+				best_time = production_time #min
+				dim_error = dimension_error #mm
+				best_speed = speed #mm/s
+				best_aperature = aperature #mm^2
+				best_temp = temp #°C
 				
 #cost calculations
+volume_cost = 500/1000 #$/mm^3
+time_cost = 18 #$/min part is in machine
 total_cost = volume_cost * volume + time_cost * best_time #USD
 			
 #output
-print("Head Speed: " + head_speed)
-print("Head Aperature: " + aperature)
-print("Culture Temperature: " + temp)
-print("Estimated Production Time: " + round(best_time, 3))
-print("Estimated Part Dimensional Error: " round(dimension_error,3))
+print("Head Speed: " + head_speed + " mm/s")
+print("Head Aperature: " + aperature + " mm^2")
+print("Culture Temperature: " + temp + "°C")
+print("Estimated Production Time: " + round(best_time, 3) + "min")
+print("Estimated Part Dimensional Error: " round(dimension_error,3) + "mm")
 print("Estimated Part Cost: $" + round(total_cost,2))

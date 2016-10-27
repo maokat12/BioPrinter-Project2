@@ -10,13 +10,15 @@ def Linear(data_x, data_y):
     x_sum = x_sum + i
     x2_sum = x2_sum + i**2
     y_sum = y_sum + j
-    xy_sum = xy_sum + i*j
-    
-  n = len(data_x) #length of data list x
+    xy_sum = xy_sum + i * j
+	
+  #length of data list x
+  n = len(data_x) 
   
   #calculate a0, a1
   a0 = ((y_sum * x2_sum) - (x_sum * xy_sum))/((n * x2_sum) - (x_sum * x_sum))
   a1 = ((n * xy_sum) - (y_sum * x_sum))/((n * x2_sum) - (x_sum * x_sum))
+  
   return a0, a1
   
 #find a0, a1 for an exponential function given and x and y data set
@@ -29,9 +31,10 @@ def Exponential(data_x, data_y):
     x_sum = x_sum + i
     x2_sum = x2_sum + i**2
     lny_sum = lny_sum + math.log(j)
-    xlny_sum = xlny_sum + i*math.log(j)
+    xlny_sum = xlny_sum + i * math.log(j)
   
-  n = len(data_x) #length of data list x
+  #length of data list x
+  n = len(data_x) 
   
   #calculate a0, a1
   a0 = math.exp(((lny_sum * x2_sum) - (x_sum * xlny_sum)) \
@@ -50,15 +53,18 @@ def Power(data_x, data_y):
     lnx_sum = lnx_sum + math.log(i)
     lnx2_sum = lnx2_sum + (math.log(i))**2
     lny_sum = lny_sum + math.log(j)
-    lnxlny_sum = lnxlny_sum + math.log(i)*math.log(j)
-    
-  n = len(data_x) #length of data list x
+    lnxlny_sum = lnxlny_sum + math.log(i) * math.log(j)
+	
+  #length of data list x
+  n = len(data_x)
   
   #calculate a0, a1
   a0 = math.exp(((lny_sum * lnx2_sum) - (lnx_sum * lnxlny_sum)) \
 				/((n * lnx2_sum) - (lnx_sum * lnx_sum)))
   a1 = ((n * lnxlny_sum) - (lny_sum * lnx_sum)) \
 		/((n * lnx2_sum) - (lnx_sum * lnx_sum))
+
+  return a0, a1
   
 #method converts list of lines(x,y data) to a list consisting of two lists(x,y)
 def dataList(lines):

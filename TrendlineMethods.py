@@ -1,8 +1,10 @@
 import math
 
+#find a0, a1 for a linear function given and x and y data set
 def Linear(data_x, data_y):
   #y = a_0 + a_1*x
   
+  #find the sum of x, y, xy, x^2
   x_sum, y_sum, xy_sum, x2_sum = 0, 0, 0, 0
   for i, j in zip(data_x, data_y):
     x_sum = x_sum + i
@@ -10,14 +12,18 @@ def Linear(data_x, data_y):
     y_sum = y_sum + j
     xy_sum = xy_sum + i*j
     
-  n = len(data_x)
+  n = len(data_x) #length of data list x
+  
+  #calculate a0, a1
   a0 = ((y_sum * x2_sum) - (x_sum * xy_sum))/((n * x2_sum) - (x_sum * x_sum))
   a1 = ((n * xy_sum) - (y_sum * x_sum))/((n * x2_sum) - (x_sum * x_sum))
   return a0, a1
   
+#find a0, a1 for an exponential function given and x and y data set
 def Exponential(data_x, data_y):
   #y = a0*e^(a1*x)
   
+  #find the sum of x, ln(y), x * ln(y), x^2
   x_sum, lny_sum, xlny_sum, x2_sum = 0, 0, 0, 0
   for i, j in zip(data_x, data_y):
     x_sum = x_sum + i
@@ -25,15 +31,20 @@ def Exponential(data_x, data_y):
     lny_sum = lny_sum + math.log(j)
     xlny_sum = xlny_sum + i*math.log(j)
   
-  n = len(data_x)
-  a0 = math.exp(((lny_sum * x2_sum) - (x_sum * xlny_sum))/((n * x2_sum) - (x_sum * x_sum)))
+  n = len(data_x) #length of data list x
+  
+  #calculate a0, a1
+  a0 = math.exp(((lny_sum * x2_sum) - (x_sum * xlny_sum)) \
+				/((n * x2_sum) - (x_sum * x_sum)))
   a1 = ((n * xlny_sum) - (lny_sum * x_sum))/((n * x2_sum) - (x_sum * x_sum))
   
   return a0, a1
-  
+
+#find a0, a1 for a power function given and x and y data set  
 def Power(data_x, data_y):
   #y = e^a0*x^a1
   
+  #find the sum of ln(x), ln(y), ln(x) * ln(y), ln(x)^2
   lnx_sum, lny_sum, lnxlny_sum, lnx2_sum = 0, 0, 0, 0
   for i, j in zip(data_x, data_y):
     lnx_sum = lnx_sum + math.log(i)
@@ -41,14 +52,18 @@ def Power(data_x, data_y):
     lny_sum = lny_sum + math.log(j)
     lnxlny_sum = lnxlny_sum + math.log(i)*math.log(j)
     
-  n = len(data_x)
-  a0 = math.exp(((lny_sum * lnx2_sum) - (lnx_sum * lnxlny_sum))/((n * lnx2_sum) - (lnx_sum * lnx_sum)))
-  a1 = ((n * lnxlny_sum) - (lny_sum * lnx_sum))/((n * lnx2_sum) - (lnx_sum * lnx_sum))
+  n = len(data_x) #length of data list x
   
-#method converts list of lines(x,y data) to a list consisting of two lists(x, y)
+  #calculate a0, a1
+  a0 = math.exp(((lny_sum * lnx2_sum) - (lnx_sum * lnxlny_sum)) \
+				/((n * lnx2_sum) - (lnx_sum * lnx_sum)))
+  a1 = ((n * lnxlny_sum) - (lny_sum * lnx_sum)) \
+		/((n * lnx2_sum) - (lnx_sum * lnx_sum))
+  
+#method converts list of lines(x,y data) to a list consisting of two lists(x,y)
 def dataList(lines):
   for j in lines:
-	  k = j.split()
+	  k = j.split() #k - intermediate list with two inputs, x and y
 	  x.append(int(k[0]))
 	  y.append(int(k[1]))
   datalist = [x, y]
@@ -66,6 +81,7 @@ def func_type(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 		sum_y = sum_y + y
 	y_bar = sum_y / len(y_list) #average
 	
+	#calculate SST
 	SST = 0
 	for y in y_list:
 		SST = SST + (y - y_bar)**2

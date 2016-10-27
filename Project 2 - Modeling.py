@@ -47,12 +47,6 @@ temp = func_type(temp_a0_lin, temp_a1_lin, temp_a0_ex, temp_a1_ex, \
 				 temp_a0_pow, temp_a1_pow, temp_x, temp_y)
 
 
-'''#determine coefficients of speed/aperature/temp equations
-speed_a0, speed_a1 = Linear(speed_x, speed_y)
-aperature_a0, aperature_a1 = Exponential(aperature_x, aperature_y)
-temp_a0, temp_a1 = Power(temperature_x, temperature_y)'''
-
-
 #find the best speed/time/aperature combination for the lowest time
 #while staying within tolerance
 #do we want to give a bit of buffer room in the tolerance?

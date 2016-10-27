@@ -100,7 +100,7 @@ def func_type(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 	for x in x_list:
 		SSE_lin = SSE_lin + (y_list.index(x) - (a0_lin + a1_lin * x))**2
 		SSE_ex = SSE_ex + (y_list.index(x) - (a0_ex * math.exp(a1_ex * x)))**2
-		SSE_pow = SSE_pow + (y_list.index(x) - (math.exp(a0_pow) * x**a1_pow))**2
+		SSE_pow = SSE_pow + (y_list.index(x) - (math.exp(a0_pow)*x**a1_pow))**2
 		
 	#calculate r2 of different model types
 	r2_lin = 1 - SSE_lin / SST

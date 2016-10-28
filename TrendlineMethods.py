@@ -99,13 +99,13 @@ def func_type(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 	SSE_pow = 0
 	for x in x_list:
 		SSE_lin = SSE_lin + (y_list.index(x) - (a0_lin + a1_lin * x))**2
-		SSE_ex = SSE_ex + (y_list.index(x) - (a0_ex * math.exp(a1_ex * x)))**2
+		SSE_ex = SSE_ex + (y_list.index(x) - ( a0_ex * math.exp(a1_ex * x)))**2
 		SSE_pow = SSE_pow + (y_list.index(x) - (math.exp(a0_pow)*x**a1_pow))**2
 		
 	#calculate r2 of different model types
 	r2_lin = 1 - SSE_lin / SST
 	r2_ex = 1 - SSE_ex / SST
-    r2_pow = 1 - SSE_pow / SST
+	r2_pow = 1 - SSE_pow / SST
 	
 	#determine which r2 is highest(which model best fits the data given)
 	if r2_lin > r2_ex and r2_lin > r2_pow:

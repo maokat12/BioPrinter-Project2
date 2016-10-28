@@ -95,12 +95,13 @@ total_cost = volume_cost * volume + time_cost * best_time #USD
 
 #test outputs
 print(speed_func)
-print()
+print(aperature_func)
+print(temp_func)
 			
 #output
 print("Head Speed: " + head_speed + " mm/s")
 print("Head Aperature: " + aperature + " mm^2")
 print("Culture Temperature: " + temp + "°C")
 print("Estimated Production Time: " + round(best_time, 3) + "min")
-print("Estimated Part Dimensional Error: " round(dimension_error,3) + "mm")
+print("Estimated Part Dimensional Error: " + round(dimension_error,3) + "mm")
 print("Estimated Part Cost: $" + round(total_cost,2))

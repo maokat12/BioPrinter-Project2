@@ -11,6 +11,7 @@ speedData = open(input("Print Speed data file: "), 'r')
 aperatureData = open(input("Print Aperature data file: "), 'r')
 tempData = open(input("Culture Temperature data file: "), 'r')
 
+#converts text from input files to list of their lines
 aperatureLines = aperatureData.readlines()
 speedLines = speedData.readlines()
 tempLines = tempData.readlines()
@@ -40,10 +41,10 @@ temp_a0_pow, temp_a1_pow = Power(temp_x, temp_y)
 #determine model(linear/exponential/power) for each dataset
 speed_func = func_type(speed_a0_lin, speed_a1_lin, speed_a0_ex, speed_a1_ex, \
 					   speed_a0_pow, speed_a1_pow, speed_x, speed_y)
-aperature = func_type(aperature_a0_lin, aperature_a1_lin, aperature_a0_ex, \
+aperature_func = func_type(aperature_a0_lin, aperature_a1_lin, aperature_a0_ex, \
 					  aperature_a1_ex, aperature_a0_pow, aperature_a1_pow, \
 					  aperature_x, aperature_y)
-temp = func_type(temp_a0_lin, temp_a1_lin, temp_a0_ex, temp_a1_ex, \
+temp_func = func_type(temp_a0_lin, temp_a1_lin, temp_a0_ex, temp_a1_ex, \
 				 temp_a0_pow, temp_a1_pow, temp_x, temp_y)
 
 
@@ -91,6 +92,10 @@ for speed in range(0, speed_x[len(speed_x)-1], 0.005):
 volume_cost = 500/1000 #$/mm^3
 time_cost = 18 #$/min part is in machine
 total_cost = volume_cost * volume + time_cost * best_time #USD
+
+#test outputs
+print(speed_func)
+print()
 			
 #output
 print("Head Speed: " + head_speed + " mm/s")

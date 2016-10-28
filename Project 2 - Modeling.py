@@ -2,9 +2,9 @@ import math
 import TrendlineMethods
 
 #inputs
-volume = float(input("What is the part volume?")) #cm^3
+volume = float(input("What is the part volume? ")) #cm^3
 volume = volume * 1000 #mm^3
-tolerance = float(input("What are the part tolerances?")) #mm
+tolerance = float(input("What are the part tolerances? ")) #mm
 
 #read data from text files and convert them to a list of lines
 speedData = open(input("Print Speed data file: "), 'r')

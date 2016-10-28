@@ -23,7 +23,7 @@ tempData.close()
 #creates lists for speed, aperature, and temperature data
 speedList, speed_x, speed_y = dataList(speedLines)
 aperatureList, aperature_x, aperature_y = dataList(aperatureLines)
-temperatureList, temperature_x, temperature_y = dataList(tempLines)
+temperatureList, temp_x, temp_y = dataList(tempLines)
 
 #determine coefficients of speed/aperature/temp for each equation type	
 speed_a0_lin, speed_a1_lin = Linear(speed_x, speed_y)

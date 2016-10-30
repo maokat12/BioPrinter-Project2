@@ -45,7 +45,7 @@ def Exponential(data_x, data_y):
 
 #find a0, a1 for a power function given and x and y data set  
 def Power(data_x, data_y):
-  #y = e^a0*x^a1
+  #y = a0*x^a1
   
   #find the sum of ln(x), ln(y), ln(x) * ln(y), ln(x)^2
   lnx_sum, lny_sum, lnxlny_sum, lnx2_sum = 0, 0, 0, 0
@@ -68,17 +68,19 @@ def Power(data_x, data_y):
   
 #method converts list of lines(x,y data) to a list consisting of two lists(x,y)
 def dataList(lines):
+  x = []
+  y = []
   for j in lines:
 	  k = j.split() #k - intermediate list with two inputs, x and y
-	  x.append(int(k[0]))
-	  y.append(int(k[1]))
+	  x.append(float(k[0]))
+	  y.append(float(k[1]))
   datalist = [x, y]
   return datalist, x, y
   
 def func_type(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 	#y = a_0 + a_1*x - linear
 	#y = a0*e^(a1*x) - exponential
-	#y = e^a0*x^a1 = power
+	#y = a0*x^a1 = power
 	
 	#find SST = SUM((y_i - y_bar)^2)
 	#find average(y_bar)
@@ -98,10 +100,9 @@ def func_type(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 	SSE_ex = 0
 	SSE_pow = 0
 	for x in x_list:
-		SSE_lin = SSE_lin + (y_list.index(x) - (a0_lin + a1_lin * x))**2
-		SSE_ex = SSE_ex + (y_list.index(x) - ( a0_ex * math.exp(a1_ex * x)))**2
-		SSE_pow = SSE_pow + (y_list.index(x) - (math.exp(a0_pow)*x**a1_pow))**2
-		
+		SSE_lin = SSE_lin + (y_list[x_list.index(x)] - (a0_lin + a1_lin * x))**2
+		SSE_ex = SSE_ex + (y_list[x_list.index(x)] - ( a0_ex * math.exp(a1_ex * x)))**2
+		SSE_pow = SSE_pow + (y_list[x_list.index(x)] - ((a0_pow)*(x**a1_pow)))**2
 	#calculate r2 of different model types
 	r2_lin = 1 - SSE_lin / SST
 	r2_ex = 1 - SSE_ex / SST
@@ -110,9 +111,16 @@ def func_type(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 	#determine which r2 is highest(which model best fits the data given)
 	if r2_lin > r2_ex and r2_lin > r2_pow:
 		function = lambda x: a0_lin + a1_lin*x
+		r2 = r2_lin
+		print("a0: ", a0_lin, " a1: ", a1_lin)
 	elif r2_ex > r2_lin and r2_ex > r2_pow:
 		function = lambda x: a0_ex * math.exp(a1_ex * x)
+		r2 = r2_ex
+		print("a0: ", a0_ex, " a1: ", a1_ex)
 	else:
-		function = lambda x: math.exp(a0_pow) * x**a1_pow
+		function = lambda x: a0_pow * x**a1_pow
+		r2 = r2_pow
+		print("a0: ", a0_pow, " a1: ", a1_pow)
 		
 	return function
+	

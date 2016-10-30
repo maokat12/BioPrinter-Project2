@@ -22,16 +22,10 @@ aperatureData.close()
 tempData.close()
 
 #creates lists for speed, aperature, and temperature data
-<<<<<<< HEAD
 speedList, speed_x, speed_y = TrendlineMethods.dataList(speedLines)
 aperatureList, aperature_x, aperature_y = TrendlineMethods.dataList( \
 										  aperatureLines)
 temperatureList, temp_x, temp_y = TrendlineMethods.dataList(tempLines)
-=======
-speedList, speed_x, speed_y = dataList(speedLines)
-aperatureList, aperature_x, aperature_y = dataList(aperatureLines)
-temperatureList, temp_x, temp_y = dataList(tempLines)
->>>>>>> origin/master
 
 #determine coefficients of speed/aperature/temp for each equation type	
 speed_a0_lin, speed_a1_lin = TrendlineMethods.Linear(speed_x, speed_y)
@@ -49,17 +43,34 @@ temp_a0_lin, temp_a1_lin = TrendlineMethods.Linear(temp_x, temp_y)
 temp_a0_ex, temp_a1_ex = TrendlineMethods.Exponential(temp_x, temp_y)
 temp_a0_pow, temp_a1_pow = TrendlineMethods.Power(temp_x, temp_y)
 
-#determine model(linear/exponential/power) for each dataset
-speed_func = TrendlineMethods.func_type(speed_a0_lin, speed_a1_lin, \
+#determine r2 for each data set with the correct model type
+#1 - linear, 2 - exponential, 3 - power
+speed_r2, speed_func_type = TrendlineMethods.r2(speed_a0_lin, speed_a1_lin, \
 					   speed_a0_ex, speed_a1_ex, speed_a0_pow, speed_a1_pow, \
 					   speed_x, speed_y)
-aperature_func = TrendlineMethods.func_type(aperature_a0_lin, \
+aperature_r2, aperature_func_type = TrendlineMethods.r2(aperature_a0_lin, \
 					  aperature_a1_lin, aperature_a0_ex, aperature_a1_ex, 
 					  aperature_a0_pow, aperature_a1_pow, \
 					  aperature_x, aperature_y)
-temp_func = TrendlineMethods.func_type(temp_a0_lin, temp_a1_lin, \
+temp_r2, temp_func_type = TrendlineMethods.r2(temp_a0_lin, temp_a1_lin, \
 					 temp_a0_ex, temp_a1_ex, temp_a0_pow, temp_a1_pow, \
-					 temp_x, temp_y)		 
+					 temp_x, temp_y)		
+
+#determine function for speed/aperature/temp
+speed_func = TrendlineMethods.func(speed_a0_lin, speed_a1_lin, \
+			 speed_a0_ex, speed_a1_ex, speed_a0_pow, speed_a1_pow, \
+			 speed_func_type)	
+aperature_func = TrendlineMethods.func(aperature_a0_lin, \
+				 aperature_a1_lin, aperature_a0_ex, aperature_a1_ex, 
+				 aperature_a0_pow, aperature_a1_pow, \
+				 aperature_func_type)				  
+temp_func = TrendlineMethods.func(temp_a0_lin, temp_a1_lin, \
+			temp_a0_ex, temp_a1_ex, temp_a0_pow, temp_a1_pow, \
+			temp_func_type)
+
+#determine a tolerance buffer % based on the lowest r^2 value			
+r2 = [speed_r2, aperature_r2, temp_r2]
+tolerance_buffer = min(r2)			
 					 
 #give initial "best" values for speed/aperature/temp/time/error
 best_speed = 99999999999
@@ -83,7 +94,7 @@ while speed <= speed_x[len(speed_x)-1]:
 			
 			#calculate total dimension error
 			dim_error = speed_error + aperature_error + temp_error
-			if(dim_error > tolerance):
+			if(dim_error > (tolerance*tolerance_buffer)):
 				break
 			
 			#calculate print/production time

@@ -77,7 +77,21 @@ def dataList(lines):
   datalist = [x, y]
   return datalist, x, y
   
-def func_type(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
+#determine formula for the model type
+def func(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, func_type):
+	#determine which r2 is highest(which model best fits the data given)
+	if func_type == 1:
+		function = lambda x: a0_lin + a1_lin*x
+	elif func_type == 2:
+		function = lambda x: a0_ex * math.exp(a1_ex * x)
+	else:
+		function = lambda x: a0_pow * x**a1_pow
+		
+	return function
+	
+#finds the model type that best matches the given data set and
+#returns the r2 value for that data set
+def r2(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 	#y = a_0 + a_1*x - linear
 	#y = a0*e^(a1*x) - exponential
 	#y = a0*x^a1 = power
@@ -100,35 +114,26 @@ def func_type(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 	SSE_ex = 0
 	SSE_pow = 0
 	for x in x_list:
-		SSE_lin = SSE_lin + (y_list[x_list.index(x)] - (a0_lin + a1_lin * x))**2
-		SSE_ex = SSE_ex + (y_list[x_list.index(x)] - ( a0_ex * math.exp(a1_ex * x)))**2
-<<<<<<< HEAD
-		SSE_pow = SSE_pow + (y_list[x_list.index(x)] - ((a0_pow)*(x**a1_pow)))**2
-=======
-		SSE_pow = SSE_pow + (y_list[x_list.index(x)] - (math.exp(a0_pow)*x**a1_pow))**2
-		
->>>>>>> origin/master
+		SSE_lin = SSE_lin + (y_list[x_list.index(x)] - \
+							(a0_lin + a1_lin * x))**2
+		SSE_ex = SSE_ex + (y_list[x_list.index(x)] - \
+						  (a0_ex * math.exp(a1_ex * x)))**2
+		SSE_pow = SSE_pow + (y_list[x_list.index(x)] - \
+							((a0_pow)*(x**a1_pow)))**2
 	#calculate r2 of different model types
 	r2_lin = 1 - SSE_lin / SST
 	r2_ex = 1 - SSE_ex / SST
 	r2_pow = 1 - SSE_pow / SST
 	
-	#determine which r2 is highest(which model best fits the data given)
 	if r2_lin > r2_ex and r2_lin > r2_pow:
-		function = lambda x: a0_lin + a1_lin*x
 		r2 = r2_lin
-		print("a0: ", a0_lin, " a1: ", a1_lin)
+		func_type = 1
 	elif r2_ex > r2_lin and r2_ex > r2_pow:
-		function = lambda x: a0_ex * math.exp(a1_ex * x)
 		r2 = r2_ex
-		print("a0: ", a0_ex, " a1: ", a1_ex)
+		func_type = 2
 	else:
-		function = lambda x: a0_pow * x**a1_pow
 		r2 = r2_pow
-		print("a0: ", a0_pow, " a1: ", a1_pow)
+		func_type = 3
 		
-	return function
-<<<<<<< HEAD
-	
-=======
->>>>>>> origin/master
+	return r2, func_type
+

@@ -23,7 +23,7 @@ def Linear(data_x, data_y):
   
 #find a0, a1 for an exponential function given and x and y data set
 def Exponential(data_x, data_y):
-  #y = a0*e^(a1*x)
+  #y = e^a0*e^(a1*x)
   
   #find the sum of x, ln(y), x * ln(y), x^2
   x_sum, lny_sum, xlny_sum, x2_sum = 0, 0, 0, 0

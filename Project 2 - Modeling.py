@@ -1,5 +1,5 @@
 #Activity X.X.X:
-#File:	<filename>.py
+#File:	Project 2 - Modeling.py
 #Date:
 #By:	Katie Mao
 #		mao86
@@ -22,6 +22,10 @@
 #and execution.
 #
 #A BRIEF DESCRIPTION OF WHAT THE PROGRAM OR FUNCTION DOES
+#Program reads in clean text files for Speed, Aperature, and Temperature,
+#takes in a desired volume and tolerance, then calculates the most
+#optimal speed/aperature/temperature to print a part while 
+#keeping error under tolerance.
 
 import math
 import project2_methods

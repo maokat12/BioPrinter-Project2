@@ -22,10 +22,16 @@ aperatureData.close()
 tempData.close()
 
 #creates lists for speed, aperature, and temperature data
+<<<<<<< HEAD
 speedList, speed_x, speed_y = TrendlineMethods.dataList(speedLines)
 aperatureList, aperature_x, aperature_y = TrendlineMethods.dataList( \
 										  aperatureLines)
 temperatureList, temp_x, temp_y = TrendlineMethods.dataList(tempLines)
+=======
+speedList, speed_x, speed_y = dataList(speedLines)
+aperatureList, aperature_x, aperature_y = dataList(aperatureLines)
+temperatureList, temp_x, temp_y = dataList(tempLines)
+>>>>>>> origin/master
 
 #determine coefficients of speed/aperature/temp for each equation type	
 speed_a0_lin, speed_a1_lin = TrendlineMethods.Linear(speed_x, speed_y)

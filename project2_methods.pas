@@ -128,6 +128,7 @@ def r2(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 	if r2_lin > r2_ex and r2_lin > r2_pow:
 		r2 = r2_lin
 		func_type = 1
+		print("a0: ", a0_lin,"a1: " a1_lin)
 	elif r2_ex > r2_lin and r2_ex > r2_pow:
 		r2 = r2_ex
 		func_type = 2
@@ -136,4 +137,3 @@ def r2(a0_lin, a1_lin, a0_ex, a1_ex, a0_pow, a1_pow, x_list, y_list):
 		func_type = 3
 		
 	return r2, func_type
-

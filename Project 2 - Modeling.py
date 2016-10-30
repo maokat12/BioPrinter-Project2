@@ -1,5 +1,30 @@
+#Activity X.X.X:
+#File:	<filename>.py
+#Date:
+#By:	Katie Mao
+#		mao86
+#		Alex Greer
+#		greer21
+#		Nathan Hess
+#		Hess35
+#		Elizabeth Pulsifer
+#		epulisfe
+#
+#ELECTRONIC SIGNATURE
+#Katie Mao
+#Alex Greer
+#Nathan Hess
+#Elizabeth Pulsifer
+
+#The electronic signature oabove indicates that the program
+#submitted for evaluation is my individual work.  I have
+#a general understanding of all aspects of its development
+#and execution.
+#
+#A BRIEF DESCRIPTION OF WHAT THE PROGRAM OR FUNCTION DOES
+
 import math
-import TrendlineMethods
+import project2_methods
 
 #inputs
 volume = float(input("What is the part volume? ")) #cm^3
@@ -8,63 +33,62 @@ tolerance = float(input("What are the part tolerances? ")) #mm
 
 #read data from text files and convert them to a list of lines
 #FIX THESE
-speedData = open("Speed Data.txt", 'r')  #input("Print Speed data file: ")
-aperatureData = open("Aperature Data.txt", 'r')
-tempData = open("Temperature Data.txt", 'r')
+speed_data = open("Speed Data.txt", 'r')  #input("Print Speed data file: ")
+aperature_data = open("Aperature Data.txt", 'r')
+temp_data = open("Temperature Data.txt", 'r')
 
 #converts text from input files to list of their lines
-aperatureLines = aperatureData.readlines()
-speedLines = speedData.readlines()
-tempLines = tempData.readlines()
+speed_lines = speed_data.readlines()
+aperature_lines = aperature_data.readlines()
+temp_lines = temp_data.readlines()
 
-speedData.close()
-aperatureData.close()
-tempData.close()
+speed_data.close()
+aperature_data.close()
+temp_data.close()
 
 #creates lists for speed, aperature, and temperature data
-speedList, speed_x, speed_y = TrendlineMethods.dataList(speedLines)
-aperatureList, aperature_x, aperature_y = TrendlineMethods.dataList( \
-										  aperatureLines)
-temperatureList, temp_x, temp_y = TrendlineMethods.dataList(tempLines)
+speed_x, speed_y = project2_methods.dataList(speedLines)
+aperature_x, aperature_y = project2_methods.dataList(aperatureLines)
+temp_x, temp_y = project2_methods.dataList(tempLines)
 
-#determine coefficients of speed/aperature/temp for each equation type	
-speed_a0_lin, speed_a1_lin = TrendlineMethods.Linear(speed_x, speed_y)
-speed_a0_ex, speed_a1_ex = TrendlineMethods.Exponential(speed_x, speed_y)
-speed_a0_pow, speed_a1_pow = TrendlineMethods.Power(speed_x, speed_y)
+#determine coefficients of speed/aperature/temp for each equation type
+speed_a0_lin, speed_a1_lin = project2_methods.Linear(speed_x, speed_y)
+speed_a0_ex, speed_a1_ex = project2_methods.Exponential(speed_x, speed_y)
+speed_a0_pow, speed_a1_pow = project2_methods.Power(speed_x, speed_y)
 
-aperature_a0_lin, aperature_a1_lin = TrendlineMethods.Linear( \
+aperature_a0_lin, aperature_a1_lin = project2_methods.Linear( \
 									 aperature_x, aperature_y)
-aperature_a0_ex, aperature_a1_ex = TrendlineMethods.Exponential( \
+aperature_a0_ex, aperature_a1_ex = project2_methods.Exponential( \
 								   aperature_x, aperature_y)
-aperature_a0_pow, aperature_a1_pow = TrendlineMethods.Power(\
+aperature_a0_pow, aperature_a1_pow = project2_methods.Power(\
 									 aperature_x, aperature_y)
 
-temp_a0_lin, temp_a1_lin = TrendlineMethods.Linear(temp_x, temp_y)
-temp_a0_ex, temp_a1_ex = TrendlineMethods.Exponential(temp_x, temp_y)
-temp_a0_pow, temp_a1_pow = TrendlineMethods.Power(temp_x, temp_y)
+temp_a0_lin, temp_a1_lin = project2_methods.Linear(temp_x, temp_y)
+temp_a0_ex, temp_a1_ex = project2_methods.Exponential(temp_x, temp_y)
+temp_a0_pow, temp_a1_pow = project2_methods.Power(temp_x, temp_y)
 
 #determine r2 for each data set with the correct model type
 #1 - linear, 2 - exponential, 3 - power
-speed_r2, speed_func_type = TrendlineMethods.r2(speed_a0_lin, speed_a1_lin, \
+speed_r2, speed_func_type = project2_methods.r2(speed_a0_lin, speed_a1_lin, \
 					   speed_a0_ex, speed_a1_ex, speed_a0_pow, speed_a1_pow, \
 					   speed_x, speed_y)
-aperature_r2, aperature_func_type = TrendlineMethods.r2(aperature_a0_lin, \
+aperature_r2, aperature_func_type = project2_methods.r2(aperature_a0_lin, \
 					  aperature_a1_lin, aperature_a0_ex, aperature_a1_ex, 
 					  aperature_a0_pow, aperature_a1_pow, \
 					  aperature_x, aperature_y)
-temp_r2, temp_func_type = TrendlineMethods.r2(temp_a0_lin, temp_a1_lin, \
+temp_r2, temp_func_type = project2_methods.r2(temp_a0_lin, temp_a1_lin, \
 					 temp_a0_ex, temp_a1_ex, temp_a0_pow, temp_a1_pow, \
 					 temp_x, temp_y)		
 
 #determine function for speed/aperature/temp
-speed_func = TrendlineMethods.func(speed_a0_lin, speed_a1_lin, \
+speed_func = project2_methods.func(speed_a0_lin, speed_a1_lin, \
 			 speed_a0_ex, speed_a1_ex, speed_a0_pow, speed_a1_pow, \
 			 speed_func_type)	
-aperature_func = TrendlineMethods.func(aperature_a0_lin, \
+aperature_func = project2_methods.func(aperature_a0_lin, \
 				 aperature_a1_lin, aperature_a0_ex, aperature_a1_ex, 
 				 aperature_a0_pow, aperature_a1_pow, \
 				 aperature_func_type)				  
-temp_func = TrendlineMethods.func(temp_a0_lin, temp_a1_lin, \
+temp_func = project2_methods.func(temp_a0_lin, temp_a1_lin, \
 			temp_a0_ex, temp_a1_ex, temp_a0_pow, temp_a1_pow, \
 			temp_func_type)
 

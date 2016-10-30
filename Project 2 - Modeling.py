@@ -27,9 +27,9 @@ import math
 import project2_methods
 
 #inputs
-volume = float(input("What is the part volume? ")) #cm^3
+volume = float(input("What is the part volume in cm^3? ")) #cm^3
 volume = volume * 1000 #mm^3
-tolerance = float(input("What are the part tolerances? ")) #mm
+tolerance = float(input("What are the part tolerances in mm? ")) #mm
 
 #read data from text files and convert them to a list of lines
 #FIX THESE
@@ -148,8 +148,8 @@ time_cost = 18 #$/min part is in machine
 total_cost = volume_cost * volume + time_cost * best_time #USD
 
 #output
-print("Head Speed: ", best_speed, " mm/s")
-print("Head Aperature: ", best_aperature, " mm^2")
+print("Head Speed: ", round(best_speed, 3), " mm/s")
+print("Head Aperature: ", round(best_aperature, 3), " mm^2")
 print("Culture Temperature: ", best_temp, "C")
 print("Estimated Production Time: ", round(best_time, 3), "min")
 print("Estimated Part Dimensional Error: ", round(dimension_error,3), "mm")

@@ -1,0 +1,53 @@
+Cartilage
+What is the part volume? 3
+What are the part tolerances? .5
+Head Speed:  0.4450000000000003  mm/s
+Head Aperature:  0.9650000000000007  mm^2
+Culture Temperature:  16.25 C
+Estimated Production Time:  116.615 min
+Estimated Part Dimensional Error:  0.482 mm
+Estimated Part Cost: $ 3599.08
+
+
+Trachael Splint
+What is the part volume? 10
+What are the part tolerances? 0.05
+Head Speed:  99999999999  mm/s
+Head Aperature:  9999999999999  mm^2
+Culture Temperature:  9999999999999 C
+Estimated Production Time:  99999999999 min
+Estimated Part Dimensional Error:  0 mm
+Estimated Part Cost: $ 1800000004982.0
+
+
+Aortic Valve
+What is the part volume? 1.5
+What are the part tolerances? 0.25
+Head Speed:  0.2000000000000001  mm/s
+Head Aperature:  0.7550000000000006  mm^2
+Culture Temperature:  10.75 C
+Estimated Production Time:  166.047 min
+Estimated Part Dimensional Error:  0.241 mm
+Estimated Part Cost: $ 3738.84
+
+
+Vasculature
+What is the part volume? 5
+What are the part tolerances? .25
+Head Speed:  0.28000000000000014  mm/s
+Head Aperature:  0.8100000000000006  mm^2
+Culture Temperature:  4.5 C
+Estimated Production Time:  368.889 min
+Estimated Part Dimensional Error:  0.241 mm
+Estimated Part Cost: $ 9140.0
+
+
+Kidney
+What is the part volume? 95
+What are the part tolerances? 1.5
+Head Speed:  2.7499999999999636  mm/s
+Head Aperature:  1.4799999999999904  mm^2
+Culture Temperature:  4.25 C
+Estimated Production Time:  389.412 min
+Estimated Part Dimensional Error:  1.447 mm
+Estimated Part Cost: $ 54509.41

@@ -1,4 +1,4 @@
-#Activity X.X.X:
+#Activity: Project
 #File:	Project 2 - Modeling.py
 #Date:
 #By:	Katie Mao
@@ -51,9 +51,9 @@ aperature_data.close()
 temp_data.close()
 
 #creates lists for speed, aperature, and temperature data
-speed_x, speed_y = project2_methods.dataList(speedLines)
-aperature_x, aperature_y = project2_methods.dataList(aperatureLines)
-temp_x, temp_y = project2_methods.dataList(tempLines)
+speed_x, speed_y = project2_methods.dataList(speed_lines)
+aperature_x, aperature_y = project2_methods.dataList(aperature_lines)
+temp_x, temp_y = project2_methods.dataList(temp_lines)
 
 #determine coefficients of speed/aperature/temp for each equation type
 speed_a0_lin, speed_a1_lin = project2_methods.Linear(speed_x, speed_y)
@@ -114,14 +114,14 @@ while speed <= speed_x[len(speed_x)-1]:
 	aperature = aperature_x[0]
 	while aperature <= aperature_x[len(aperature_x)-1]:
 		temp = temp_x[0]
-		while temp <= temp_x[len(temp_x)-1]:
+		while temp <= 36:
 			#calculate error with each variable
-			speed_error = speed_func(speed)
-			aperature_error = aperature_func(aperature)
-			temp_error = temp_func(temp)
+			#speed_error = speed_func(speed)
+			#aperature_error = aperature_func(aperature)
+			#temp_error = temp_func(temp)
 			
 			#calculate total dimension error
-			dim_error = speed_error + aperature_error + temp_error
+			dim_error = speed_func(speed) + aperature_func(aperature) + temp_func(temp)
 			if(dim_error > (tolerance*tolerance_buffer)):
 				break
 			
@@ -152,9 +152,12 @@ time_cost = 18 #$/min part is in machine
 total_cost = volume_cost * volume + time_cost * best_time #USD
 
 #output
-print("Head Speed: ", round(best_speed, 3), " mm/s")
-print("Head Aperature: ", round(best_aperature, 3), " mm^2")
-print("Culture Temperature: ", best_temp, "C")
-print("Estimated Production Time: ", round(best_time, 3), "min")
-print("Estimated Part Dimensional Error: ", round(dimension_error,3), "mm")
-print("Estimated Part Cost: $", round(total_cost,2))
+if(best_speed == 99999999999):
+	print("Cannot print part at desired tolerance.")
+else:
+	print("Head Speed: ", round(best_speed, 3), " mm/s")
+	print("Head Aperature: ", round(best_aperature, 3), " mm^2")
+	print("Culture Temperature: ", best_temp, "C")
+	print("Estimated Production Time: ", round(best_time, 3), "min")
+	print("Estimated Part Dimensional Error: ", round(dimension_error,3), "mm")
+	print("Estimated Part Cost: $", round(total_cost,2))

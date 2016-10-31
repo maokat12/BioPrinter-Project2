@@ -1,3 +1,29 @@
+#Activity: Project
+#File:	project2_methods.py
+#Date:
+#By:	Katie Mao
+#		mao86
+#		Alex Greer
+#		greer21
+#		Nathan Hess
+#		Hess35
+#		Elizabeth Pulsifer
+#		epulisfe
+#
+#ELECTRONIC SIGNATURE
+#Katie Mao
+#Alex Greer
+#Nathan Hess
+#Elizabeth Pulsifer
+
+#The electronic signature oabove indicates that the program
+#submitted for evaluation is my individual work.  I have
+#a general understanding of all aspects of its development
+#and execution.
+#
+#A BRIEF DESCRIPTION OF WHAT THE PROGRAM OR FUNCTION DOES
+#A library of all methods used in the project2_model program.
+
 import math
 
 #find a0, a1 for a linear function given and x and y data set

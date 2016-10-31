@@ -1,53 +1,53 @@
 Cartilage
-What is the part volume? 3
-What are the part tolerances? .5
-Head Speed:  0.4450000000000003  mm/s
-Head Aperature:  0.9650000000000007  mm^2
-Culture Temperature:  16.25 C
-Estimated Production Time:  116.615 min
-Estimated Part Dimensional Error:  0.482 mm
-Estimated Part Cost: $ 3599.08
+What is the part volume in cm^3? 3
+What are the part tolerances in mm? .5
+Head Speed:  0.48  mm/s
+Head Aperature:  0.965  mm^2
+Culture Temperature:  17.75 C
+Estimated Production Time:  108.451 min
+Estimated Part Dimensional Error:  0.462 mm
+Estimated Part Cost: $ 3452.11
 
 
 Trachael Splint
-What is the part volume? 10
-What are the part tolerances? 0.05
-Head Speed:  99999999999  mm/s
-Head Aperature:  9999999999999  mm^2
-Culture Temperature:  9999999999999 C
-Estimated Production Time:  99999999999 min
-Estimated Part Dimensional Error:  0 mm
-Estimated Part Cost: $ 1800000004982.0
+What is the part volume in cm^3? 10
+What are the part tolerances in mm? 0.05
+Head Speed:  0.075  mm/s
+Head Aperature:  0.43  mm^2
+Culture Temperature:  4.0 C
+Estimated Production Time:  5187.959 min
+Estimated Part Dimensional Error:  0.046 mm
+Estimated Part Cost: $ 98383.26
 
 
 Aortic Valve
-What is the part volume? 1.5
-What are the part tolerances? 0.25
-Head Speed:  0.2000000000000001  mm/s
-Head Aperature:  0.7550000000000006  mm^2
-Culture Temperature:  10.75 C
-Estimated Production Time:  166.047 min
-Estimated Part Dimensional Error:  0.241 mm
-Estimated Part Cost: $ 3738.84
+What is the part volume in cm^3? 1.5
+What are the part tolerances in mm? .25
+Head Speed:  0.24  mm/s
+Head Aperature:  0.79  mm^2
+Culture Temperature:  14.0 C
+Estimated Production Time:  132.143 min
+Estimated Part Dimensional Error:  0.23 mm
+Estimated Part Cost: $ 3128.57
 
 
 Vasculature
-What is the part volume? 5
-What are the part tolerances? .25
-Head Speed:  0.28000000000000014  mm/s
-Head Aperature:  0.8100000000000006  mm^2
-Culture Temperature:  4.5 C
-Estimated Production Time:  368.889 min
-Estimated Part Dimensional Error:  0.241 mm
-Estimated Part Cost: $ 9140.0
+What is the part volume in cm^3? 5
+What are the part tolerances in mm? .25
+Head Speed:  0.43  mm/s
+Head Aperature:  0.875  mm^2
+Culture Temperature:  7.75 C
+Estimated Production Time:  222.581 min
+Estimated Part Dimensional Error:  0.231 mm
+Estimated Part Cost: $ 6506.45
 
 
 Kidney
-What is the part volume? 95
-What are the part tolerances? 1.5
-Head Speed:  2.7499999999999636  mm/s
-Head Aperature:  1.4799999999999904  mm^2
+What is the part volume in cm^3? 95
+What are the part tolerances in mm? 1.5
+Head Speed:  2.675  mm/s
+Head Aperature:  1.52  mm^2
 Culture Temperature:  4.25 C
 Estimated Production Time:  389.412 min
-Estimated Part Dimensional Error:  1.447 mm
+Estimated Part Dimensional Error:  1.385 mm
 Estimated Part Cost: $ 54509.41

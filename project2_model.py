@@ -36,10 +36,11 @@ volume = volume * 1000 #mm^3
 tolerance = float(input("What are the part tolerances in mm? ")) #mm
 
 #read data from text files and convert them to a list of lines
-#FIX THESE
-speed_data = open("Speed Data.txt", 'r')  #input("Print Speed data file: ")
-aperature_data = open("Aperature Data.txt", 'r')
-temp_data = open("Temperature Data.txt", 'r')
+print("Program takes in cleaned data files that have only datapoints.")
+print("Please remove any titles or other text before inputting data files")
+speed_data = open(input("What is the print speed datafile? "), 'r')
+aperature_data = open(input("What is the aperature datafile? "), 'r')
+temp_data = open(input("What is the temperature datafile? "), 'r')
 
 #converts text from input files to list of their lines
 speed_lines = speed_data.readlines()
@@ -59,6 +60,8 @@ temp_x, temp_y = project2_methods.dataList(temp_lines)
 speed_a0_lin, speed_a1_lin = project2_methods.Linear(speed_x, speed_y)
 speed_a0_ex, speed_a1_ex = project2_methods.Exponential(speed_x, speed_y)
 speed_a0_pow, speed_a1_pow = project2_methods.Power(speed_x, speed_y)
+
+speed_a0_lin = 0 #if the speed is 0, the dimension error should also be 0
 
 aperature_a0_lin, aperature_a1_lin = project2_methods.Linear( \
 									 aperature_x, aperature_y)
@@ -101,11 +104,11 @@ r2 = [speed_r2, aperature_r2, temp_r2]
 tolerance_buffer = min(r2)			
 					 
 #give initial "best" values for speed/aperature/temp/time/error
-best_speed = 99999999999
-best_aperature = 9999999999999
-best_temp = 9999999999999
-best_time = 99999999999
-dimension_error = 0
+best_speed = 99999999999   #mm/sec
+best_aperature = 9999999999999  #mm^2
+best_temp = 9999999999999   #Celsius
+best_time = 99999999999  #sec
+dimension_error = 0  #mm
 
 #run through every combination of speed/aperature/temp to
 #find the lowest time while staying within tolerance
@@ -140,7 +143,7 @@ while speed <= speed_x[len(speed_x)-1]:
 				dimension_error = dim_error #mm
 				best_speed = speed #mm/s
 				best_aperature = aperature #mm^2
-				best_temp = temp #C
+				best_temp = temp #Celsius
 				
 			temp += .25
 		aperature += 0.005
@@ -157,7 +160,7 @@ if(best_speed == 99999999999):
 else:
 	print("Head Speed: ", round(best_speed, 3), " mm/s")
 	print("Head Aperature: ", round(best_aperature, 3), " mm^2")
-	print("Culture Temperature: ", best_temp, "C")
+	print("Culture Temperature: ", best_temp, "Celsius")
 	print("Estimated Production Time: ", round(best_time, 3), "min")
 	print("Estimated Part Dimensional Error: ", round(dimension_error,3), "mm")
 	print("Estimated Part Cost: $", round(total_cost,2))

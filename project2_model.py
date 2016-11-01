@@ -36,7 +36,7 @@ volume = volume * 1000 #mm^3
 tolerance = float(input("What are the part tolerances in mm? ")) #mm
 
 #read data from text files and convert them to a list of lines
-print("Program takes in cleaned data files that have only datapoints.")
+print("Program takes in CLEANED data files that have only datapoints.")
 print("Please remove any titles or other text before inputting data files")
 speed_data = open(input("What is the print speed datafile? "), 'r')
 aperature_data = open(input("What is the aperature datafile? "), 'r')

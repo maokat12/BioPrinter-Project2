@@ -30,17 +30,17 @@
 import math
 import project2_methods
 
-#inputs
-volume = float(input("What is the part volume in cm^3? ")) #cm^3
-volume = volume * 1000 #mm^3
-tolerance = float(input("What are the part tolerances in mm? ")) #mm
-
 #read data from text files and convert them to a list of lines
 print("Program takes in CLEANED data files that have only datapoints.")
 print("Please remove any titles or other text before inputting data files")
 speed_data = open(input("What is the print speed datafile? "), 'r')
 aperature_data = open(input("What is the aperature datafile? "), 'r')
 temp_data = open(input("What is the temperature datafile? "), 'r')
+
+#inputs
+volume = float(input("What is the part volume in cm^3? ")) #cm^3
+volume = volume * 1000 #mm^3
+tolerance = float(input("What are the part tolerances in mm? ")) #mm
 
 #converts text from input files to list of their lines
 speed_lines = speed_data.readlines()
@@ -161,7 +161,7 @@ total_cost = volume_cost * volume + time_cost * best_time #USD
 if(best_speed == 99999999999):
 	print("Cannot print part at desired tolerance.")
 else:
-	print("Head Speed: ", round(speed_min, 3), " mm/s")
+	print("Head Speed: ", round(speed_min, 3), " mm/min")
 	print("Head Aperature: ", round(best_aperature, 3), " mm^2")
 	print("Culture Temperature: ", best_temp, "Celsius")
 	print("Estimated Production Time: ", round(best_time, 3), "min")

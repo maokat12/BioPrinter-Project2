@@ -149,6 +149,9 @@ while speed <= speed_x[len(speed_x)-1]:
 		aperature += 0.005
 	speed += 0.005
 	
+#units
+speed_min = best_speed * 60 #mm/min
+	
 #cost calculations
 volume_cost = 500/1000 #$/mm^3
 time_cost = 18 #$/min part is in machine
@@ -158,7 +161,7 @@ total_cost = volume_cost * volume + time_cost * best_time #USD
 if(best_speed == 99999999999):
 	print("Cannot print part at desired tolerance.")
 else:
-	print("Head Speed: ", round(best_speed, 3), " mm/s")
+	print("Head Speed: ", round(speed_min, 3), " mm/s")
 	print("Head Aperature: ", round(best_aperature, 3), " mm^2")
 	print("Culture Temperature: ", best_temp, "Celsius")
 	print("Estimated Production Time: ", round(best_time, 3), "min")

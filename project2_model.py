@@ -1,6 +1,6 @@
 #Activity: Project
 #File:	Project 2 - Modeling.py
-#Date:
+#Date:	1 November 2016
 #By:	Katie Mao
 #		mao86
 #		Alex Greer
@@ -116,7 +116,7 @@ speed = speed_x[0]
 while speed <= speed_x[len(speed_x)-1]:
 	aperature = aperature_x[0]
 	while aperature <= aperature_x[len(aperature_x)-1]:
-		temp = temp_x[0]
+		temp = 4
 		while temp <= 36:
 			#calculate error with each variable
 			#speed_error = speed_func(speed)
@@ -149,7 +149,7 @@ while speed <= speed_x[len(speed_x)-1]:
 		aperature += 0.005
 	speed += 0.005
 	
-#units
+#unit conversion
 speed_min = best_speed * 60 #mm/min
 	
 #cost calculations

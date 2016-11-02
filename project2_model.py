@@ -1,5 +1,5 @@
 #Activity: Project
-#File:	Project 2 - Modeling.py
+#File:	project2_model.py
 #Date:	1 November 2016
 #By:	Katie Mao
 #		mao86

@@ -16,7 +16,7 @@
 #Nathan Hess
 #Elizabeth Pulsifer
 
-#The electronic signature oabove indicates that the program
+#The electronic signature above indicates that the program
 #submitted for evaluation is my individual work.  I have
 #a general understanding of all aspects of its development
 #and execution.

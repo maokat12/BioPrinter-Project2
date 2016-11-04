@@ -9,7 +9,7 @@ Estimated Part Dimensional Error:  0.462 mm
 Estimated Part Cost: $ 3452.11
 
 
-Trachael Splint
+Tracheal Splint
 What is the part volume in cm^3? 10
 What are the part tolerances in mm? 0.05
 Head Speed:  0.075  mm/s
